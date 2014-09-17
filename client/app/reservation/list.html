@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Reservation
+                <div class="btn-group list-button">
+                    <button type="button" class="btn btn-default" ng-click="addNew()" >Add</button>
+                </div>
+            </div>
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr style="font-size:14px;">
+                        <th></th>
+                        <th></th>
+            
+                        <th>Customer</th>
+                        <th>Server</th>
+                        <th>Scheduled datetime</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in reservations" ng-class-even="table-striped" style="cursor:pointer">
+                        <td>
+                            <div class="btn-group">
+                                <a ng-click="selectItem(item)" >Edit</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <a ng-click="deleteItem(item)" >Delete</a>
+                            </div>
+                        </td>
+                            <td>{{getCustomerById(item.customer._id).name}}</td>
+                    
+                            <td>{{getServerById(item.server._id).name}}</td>
+
+                                <td>{{item.scheduled_datetime.formatReservationDate()}}</td>
+                            
+                
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

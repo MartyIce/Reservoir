@@ -1,0 +1,11 @@
+<label class="ng-binding wizard-input-label" >{{label}}</label>
+<textarea name="{{inputName}}"
+       ng-model="model[modelPath]"
+       class="form-control"
+       placeholder="{{placeholder}}"
+       validator
+       ng-required="required"
+       ng-pattern="{{pattern}}"
+       data-pattern-message="{{pattern}}_text"
+       ng-disabled="inputDisabled"
+        rows="5"/>

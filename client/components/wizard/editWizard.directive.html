@@ -1,0 +1,16 @@
+<div ng-transclude>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-primary pull-left" ng-click="cancelEdit()"><span class="ng-binding">Cancel</span>
+        </button>
+        <button ng-if="isLastPage()" ng-click="saveItem()" class="btn btn-primary pull-right save-button"><span>Save</span>
+            <span class="glyphicon glyphicon-chevron-right"></span></button>
+        <button ng-if="!isLastPage()" ng-click="goNext()" class="btn btn-primary pull-right next-button"><span>Next</span>
+            <span class="glyphicon glyphicon-chevron-right"></span></button>
+        <button ng-if="!isFirstPage()" ng-click="goBack()" class="btn btn-primary pull-right">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span>Back</span>
+            </button>
+    </div>
+</div>

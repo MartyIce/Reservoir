@@ -1,0 +1,8 @@
+    <label class="ng-binding wizard-input-label" >{{label}}</label>
+    <select name="{{inputName}}"
+            ng-model="model[modelPath]"
+            class="form-control"
+            ng-options="item._id as item.name for item in list"
+            validator
+            ng-required="required"
+            ng-disabled="inputDisabled"></select>

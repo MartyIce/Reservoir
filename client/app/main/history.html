@@ -1,0 +1,18 @@
+<div ng-controller="historyController">
+    <h4>Select Date:</h4><input type="date" ng-model="todaysDate"/>
+
+    <table class="table">
+        <tr>
+            <th>Customer</th>
+            <th>Server</th>
+            <th>Date/Time</th>
+            <th>Status</th>
+        </tr>
+        <tr ng-repeat="r in reservations">
+            <td>{{r.customer.name}}</td>
+            <td>{{r.server.name}}</td>
+            <td>{{r.scheduled_datetime.formatReservationDate()}}</td>
+            <td>{{r.status}}</td>
+        </tr>
+    </table>
+</div>

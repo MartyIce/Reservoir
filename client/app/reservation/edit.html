@@ -1,0 +1,36 @@
+<div style="padding: 30px">
+    <div class="row">
+        <div class="col-md-12">
+            <form role="form" name="form" novalidate="" class="ng-pristine ng-invalid ng-invalid-required">
+
+                <div class="col-md-6">
+                    <label class="ng-binding wizard-input-label">Existing Customer</label>
+                    <input type="text" ng-model="reservation.customer" placeholder="Customer Name"
+                           typeahead="customer as customer.name for customer in getCustomers($viewValue)"
+                           class="wizard-input form-control">
+                </div>
+                <div class="col-md-6">
+                    <label class="ng-binding wizard-input-label">New Customer</label>
+                    <input type="text" ng-model="newCustomer.name" placeholder="Customer Name" class="wizard-input form-control">
+                    <input type="text" ng-model="newCustomer.email" placeholder="Email (Optional)" class="wizard-input form-control" style="margin-top: 4px;">
+                </div>
+                <wizard-input-date class="col-md-6 wizard-input" input-name="scheduled_datetimeInput"
+                                   label="Date" model="reservation" model-path="scheduled_datetime"
+                                   placeholder="Enter Scheduled Datetime"></wizard-input-date>
+                <wizard-input-select class="col-md-6 wizard-input" input-name="customerInput"
+                                     label="Time" model="reservation" model-path="time_value"
+                                     list="timeList"></wizard-input-select>
+                <wizard-input-text-area class="col-xs-12 col-md-12 wizard-input" input-name="customerInput"
+                                        label="Notes" model="reservation" model-path="notes"></wizard-input-text-area>
+            </form>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 10px;">
+        <div class="col-xs-12">
+            <button ng-click="saveReservation()" class="btn btn-primary pull-right save-button"><span>Save</span>
+                <span class="glyphicon glyphicon-chevron-right"></span></button>
+            <button class="btn btn-primary pull-right" style="margin-right: 5px;"  ng-click="cancel()"><span class="ng-binding">Cancel</span>
+            </button>
+        </div>
+    </div>
+</div>

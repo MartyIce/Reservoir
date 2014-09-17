@@ -1,0 +1,32 @@
+<div ng-controller="todayController">
+    <div class="row">
+        <div class="col-md-8">
+            <h4>Today's Reservations:</h4>
+        </div>
+        <div class="col-md-4">
+            <button class="btn pull-right" ng-click="openTableMap()">Tables</button>
+            <button class="btn pull-right" style="margin-right: 5px;" ng-click="createReservation()">Create</button>
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>Customer</th>
+            <th>Date/Time</th>
+            <th>Status</th>
+            <th>Seated</th>
+            <th>Server</th>
+        </tr>
+        <tr ng-repeat="r in reservations">
+            <td>{{r.customer.name}}</td>
+            <td>{{r.scheduled_datetime.shortReservationTimeFormat()}}</td>
+            <td>
+                <button ng-class="getActionClass(r)" class="btn-md" style="min-width: 100px;" ng-click="action(r)">
+                    {{getActionText(r)}}
+                </button>
+            </td>
+            <td>{{getSeatedTime(r)}}</td>
+            <td>{{r.server.name}}</td>
+        </tr>
+    </table>
+</div>
