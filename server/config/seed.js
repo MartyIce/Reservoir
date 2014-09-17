@@ -63,7 +63,6 @@ function makeBirthDate() {
 
 function getRandomDate(daysToAdd) {
     var todayInTime = (new Date((new Date()).toDateString())).getTime();
-    console.log('todayInTime:' + new Date((new Date()).toDateString()));
     var returnVal = new Date(todayInTime + (daysToAdd * 24 * 60 * 60000));
     return returnVal;
 }
@@ -241,8 +240,6 @@ var addCustomers = Customer.find({}).remove(function() {
 
 function addReservations(employees, customers, tables) {
 
-    console.log('adding reservations');
-
     // create random combinations of reservations
     for(var i = 0; i < 500; i++){
         var c = getRand(customers);
@@ -268,11 +265,11 @@ function addReservations(employees, customers, tables) {
         };
         // we'll seat most of hte past reservations
         var isPrior = new Date(r.scheduled_datetime).getTime() < new Date().getTime();
-        if(isPrior) {
-            console.log('prior: ' + new Date(r.scheduled_datetime));
-        } else {
-            console.log('later: ' + new Date(r.scheduled_datetime) + ' today: ' + new Date());
-        }
+//        if(isPrior) {
+//            console.log('prior: ' + new Date(r.scheduled_datetime));
+//        } else {
+//            console.log('later: ' + new Date(r.scheduled_datetime) + ' today: ' + new Date());
+//        }
 
         if(isPrior && getRandomInt(0, 8) < 6) {
             r.seated_datetime = r.scheduled_datetime + (getRandomInt(-10, 30) * 60000);
