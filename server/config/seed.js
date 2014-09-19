@@ -62,8 +62,9 @@ function makeBirthDate() {
 }
 
 function getRandomDate(daysToAdd) {
+    var timeToAdd = daysToAdd * 24 * 60 * 60000;
     var todayInTime = (new Date((new Date()).toDateString())).getTime();
-    var returnVal = new Date(todayInTime + (daysToAdd * 24 * 60 * 60000));
+    var returnVal = new Date(todayInTime + (timeToAdd));
     return returnVal;
 }
 function getFirstName() {
@@ -241,26 +242,28 @@ var addCustomers = Customer.find({}).remove(function() {
 function addReservations(employees, customers, tables) {
 
     // create random combinations of reservations
-    for(var i = 0; i < 1; i++){
+    for(var i = 0; i < 250; i++){
         var c = getRand(customers);
-//
-//        var schedDate = getRandomDate(getRandomInt(-7, 14));
-//
-//        var hour = getRandomInt(19, 23);
-//        if(getRandomInt(0, 1) === 1) {
-//            hour = getRandomInt(11, 14); // lunch
-//        }
-//
-//        var timeValue = (hour * 60) + (getRandomInt(0, 3) * 15);
+
+        var schedDate = getRandomDate(getRandomInt(-7, 14));
+
+        var hour = getRandomInt(19, 23);
+        if(getRandomInt(0, 1) === 1) {
+            hour = getRandomInt(11, 14); // lunch
+        }
 
 
-        var schedDate = getRandomDate(0, 0);
-        var hour = 11; // lunch
-        var timeValue = (hour * 60);
+        var timeValue = (hour * 60) + (getRandomInt(0, 3) * 15);
+
+//        var schedDate = getRandomDate(0, 0);
+//        var hour = 11; // lunch
+//        var timeValue = (hour * 60);
+
 
         var r = {
             customer: c._id.toString(),
-            scheduled_datetime: new Date(schedDate.getTime() + (timeValue * 60000)).getTime(),
+            //scheduled_datetime: new Date(2014, 8, 18, 11, 0, 0).getTime(),
+            scheduled_datetime: new Date(schedDate.getTime() + (timeValue * 60000)).toISOString(),
             notes: getLoremIpsum(getRandomInt(3, 20)),
             status: 'Open'
         };

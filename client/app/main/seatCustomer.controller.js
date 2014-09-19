@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('reservoirApp')
-  .controller('seatCustomerController', function ($scope, $modalInstance, reservationId, $http, seatingService, reservationService) {
+  .controller('seatCustomerController', ['$scope', '$modalInstance', 'reservationId', '$http', 'seatingService', 'reservationService', function ($scope, $modalInstance, reservationId, $http, seatingService, reservationService) {
 
         if (reservationId && reservationId.length > 0) {
             $http.get('/api/reservations/' + reservationId).success(function (reservation) {
@@ -55,4 +55,4 @@ angular.module('reservoirApp')
             console.log('seat selected:', seat);
         });
 
-    });
+    }]);

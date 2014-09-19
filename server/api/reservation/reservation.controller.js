@@ -24,9 +24,10 @@ exports.index = function(req, res) {
         var queryExists = false;
         var quer = Reservation.apiQuery(req.query);
         if(req.query.hasOwnProperty('scheduled_datetime')) {
-            var start = new Date((new Date(req.query.scheduled_datetime)).toDateString()).addDays(1);
+            var start = new Date(req.query.scheduled_datetime);
             var end = start.addDays(1);
-            quer = Reservation.find({"scheduled_datetime": {"$gte": start, "$lt": end}});
+            console.log('start: ' + start.toISOString() + ' end: ' + end.toISOString());
+            quer = Reservation.find({"scheduled_datetime": {"$gte": start.toISOString(), "$lt": end.toISOString()}});
             quer.sort('scheduled_datetime');
             quer.sort('customer');
             queryExists = true;

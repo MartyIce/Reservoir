@@ -14,8 +14,13 @@ angular.module('reservoirApp')
         }
 
         me.getToday = function() {
-            return $http.get('/api/reservations?scheduled_datetime=' + (new Date()).shortDateFormat());
+            return $http.get('/api/reservations?scheduled_datetime=' + new Date(new Date().toDateString()).toISOString());
         };
+        me.getDate = function(date) {
+            var d = new Date(date);
+            d.setDate(d.getDate()+1);
+            return $http.get('/api/reservations?scheduled_datetime=' + new Date(d.toDateString()).toISOString())
+        }
         me.completeReservation = function(r) {
             r.completed_datetime = new Date();
             r.status = 'Completed';

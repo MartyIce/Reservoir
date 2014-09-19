@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('reservoirApp')
-  .controller('historyController', function ($scope, $http, socket) {
+  .controller('historyController', function ($scope, $http, reservationService) {
 
         $scope.todaysDate = new Date().shortDateFormat();
         $scope.refreshDate = function() {
-            $http.get('/api/reservations?scheduled_datetime=' + $scope.todaysDate).success(function(reservations) {
+            reservationService.getDate($scope.todaysDate).success(function (reservations) {
                 $scope.reservations = reservations;
             });
+
         }
         $scope.refreshDate();
         $scope.$watch(

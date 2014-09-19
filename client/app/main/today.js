@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('reservoirApp')
-    .controller('todayController', function ($scope, $modal, reservationService) {
+    .controller('todayController', ['$scope', '$modal', 'reservationService', function ($scope, $modal, reservationService) {
 
         $scope.hasAction = function (r) {
             return r.status === 'Open';
@@ -88,4 +88,4 @@ angular.module('reservoirApp')
             });
         }
 
-    });
+    }]);
