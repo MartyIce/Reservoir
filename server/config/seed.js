@@ -241,21 +241,22 @@ var addCustomers = Customer.find({}).remove(function() {
 function addReservations(employees, customers, tables) {
 
     // create random combinations of reservations
-    for(var i = 0; i < 500; i++){
+    for(var i = 0; i < 1; i++){
         var c = getRand(customers);
+//
+//        var schedDate = getRandomDate(getRandomInt(-7, 14));
+//
+//        var hour = getRandomInt(19, 23);
+//        if(getRandomInt(0, 1) === 1) {
+//            hour = getRandomInt(11, 14); // lunch
+//        }
+//
+//        var timeValue = (hour * 60) + (getRandomInt(0, 3) * 15);
 
-        var schedDate = getRandomDate(getRandomInt(-7, 14));
 
-        var hour = getRandomInt(19, 23);
-        if(getRandomInt(0, 1) === 1) {
-            hour = getRandomInt(11, 14); // lunch
-        }
-
-        var timeValue = (hour * 60) + (getRandomInt(0, 3) * 15);
-
-//        var schedDate = getRandomDate(0, 0);
-//        var hour = 12; // lunch
-//        var timeValue = (hour * 60);
+        var schedDate = getRandomDate(0, 0);
+        var hour = 11; // lunch
+        var timeValue = (hour * 60);
 
         var r = {
             customer: c._id.toString(),
@@ -265,11 +266,11 @@ function addReservations(employees, customers, tables) {
         };
         // we'll seat most of hte past reservations
         var isPrior = new Date(r.scheduled_datetime).getTime() < new Date().getTime();
-//        if(isPrior) {
-//            console.log('prior: ' + new Date(r.scheduled_datetime));
-//        } else {
-//            console.log('later: ' + new Date(r.scheduled_datetime) + ' today: ' + new Date());
-//        }
+        if(isPrior) {
+            console.log('prior: ' + new Date(r.scheduled_datetime));
+        } else {
+            console.log('later: ' + new Date(r.scheduled_datetime) + ' today: ' + new Date());
+        }
 
         if(isPrior && getRandomInt(0, 8) < 6) {
             r.seated_datetime = r.scheduled_datetime + (getRandomInt(-10, 30) * 60000);
