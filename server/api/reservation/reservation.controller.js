@@ -118,13 +118,13 @@ exports.update = function(req, res) {
               // push client id (converted from string to mongo object id) into clients
               tableIds.push(mongoose.Types.ObjectId(t._id));
           });
-          if(!isObjectId(req.body.server)) {
+          if(req.body.server && !isObjectId(req.body.server)) {
               req.body.server = req.body.server._id;
           }
-          if(!isObjectId(req.body.seated_by)) {
+          if(req.body.seated_by && !isObjectId(req.body.seated_by)) {
               req.body.seated_by = req.body.seated_by._id;
           }
-          if(!isObjectId(req.body.customer)) {
+          if(req.body.customer && !isObjectId(req.body.customer)) {
               req.body.customer = req.body.customer._id;
           }
 

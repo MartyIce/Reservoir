@@ -59,6 +59,7 @@ angular.module('reservoirApp')
                         }
                     });
 
+                    // TODO - reservations aren't always refreshing correctly in dist on heroku
                     modalInstance.result.then(function (r) {
                         refreshReservations();
                     }, function () {

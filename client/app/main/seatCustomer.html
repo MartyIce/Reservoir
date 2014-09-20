@@ -1,61 +1,58 @@
-<div class="modal-content">
-    <div class="modal-header modal-padded">
-        <h4>Seat Customer - {{reservation.customer.name}}</h4>
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4>Seat Customer - {{reservation.customer.name}}</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <label class="col-md-2 wizard-input-label">Reservation:</label>
+        <label class="col-md-4 wizard-input-label bold-label">{{reservation.scheduled_datetime.shortReservationFormat()}}</label>
+        <label class="col-md-2 wizard-input-label">Seated:</label>
+        <label class="col-md-4 wizard-input-label bold-label">{{reservation.seated_datetime.shortReservationFormat()}}</label>
     </div>
-    <form role="form" novalidate="">
-        <div class="modal-body modal-padded" style="min-height: 400px;">
-            <div class="row">
-                <label class="col-md-2 wizard-input-label">Reservation:</label>
-                <label class="col-md-4 wizard-input-label bold-label">{{reservation.scheduled_datetime.shortReservationFormat()}}</label>
-                <label class="col-md-2 wizard-input-label">Seated:</label>
-                <label class="col-md-4 wizard-input-label bold-label">{{reservation.seated_datetime.shortReservationFormat()}}</label>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label class="ng-binding wizard-input-label">Seated By</label>
-                    <input type="text" ng-model="reservation.seated_by" placeholder="Seated By"
-                           typeahead="seater as seater.name for seater in getSeaters($viewValue)"
-                           class="wizard-input form-control">
-                </div>
-                <div class="col-md-6">
+    <div class="row">
+        <div class="col-md-6">
+            <label class="ng-binding wizard-input-label">Seated By</label>
+            <input type="text" ng-model="reservation.seated_by" placeholder="Seated By"
+                   typeahead="seater as seater.name for seater in getSeaters($viewValue)"
+                   class="wizard-input form-control">
+        </div>
+        <div class="col-md-6">
 
-                    <label class="ng-binding wizard-input-label">Server</label>
-                    <input type="text" ng-model="reservation.server" placeholder="Server"
-                           typeahead="server as server.name for server in getServers($viewValue)"
-                           class="wizard-input form-control">
-                </div>
-            </div>
+            <label class="ng-binding wizard-input-label">Server</label>
+            <input type="text" ng-model="reservation.server" placeholder="Server"
+                   typeahead="server as server.name for server in getServers($viewValue)"
+                   class="wizard-input form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="margin-top: 20px;">
+            <label class="ng-binding wizard-input-label">Table(s)</label>
 
-            <div class="row">
-                <div class="col-md-12" style="margin-top: 20px;">
-                    <label class="ng-binding wizard-input-label">Table(s)</label>
-                    <div style="margin-left: 20px;">
-                        <seat-chart-directive></seat-chart-directive>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <label class="ng-binding wizard-input-label" >Notes</label>
-                    <textarea name="reservationNotes"
-                              ng-model="reservation.notes"
-                              class="form-control"
-                              rows="5"/>
-                </div>
+            <div style="margin-left: 20px;">
+                <seat-chart-directive/>
             </div>
         </div>
-        <div class="modal-footer modal-padded">
-            <div class="pull-right" ng-if="reservation.status==='Open'">
-                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-                <button class="btn btn-primary" ng-click="seatCustomer()">Seat</button>
-            </div>
-            <div class="pull-right" ng-if="reservation.status==='Seated'">
-                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-                <button class="btn btn-primary" ng-click="updateReservation()">Update</button>
-                <button class="btn btn-primary" ng-click="completeReservation()">Complete</button>
-            </div>
-        </div>
-    </form>
+    </div>
 
+    <div class="row">
+        <div class="col-md-12">
+            <label class="ng-binding wizard-input-label">Notes</label>
+            <textarea name="reservationNotes"
+                      ng-model="reservation.notes"
+                      class="form-control"
+                      rows="5"></textarea>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <div class="pull-right" ng-if="reservation.status==='Open'">
+        <button class="btn-large btn-warning" ng-click="cancel()">Cancel</button>
+        <button class="btn-large btn-primary" ng-click="seatCustomer()">Seat</button>
+    </div>
+    <div class="pull-right" ng-if="reservation.status==='Seated'">
+        <button class="btn-large btn-warning" ng-click="cancel()">Cancel</button>
+        <button class="btn-large btn-primary" ng-click="updateReservation()">Update</button>
+        <button class="btn-large btn-primary" ng-click="completeReservation()">Complete</button>
+    </div>
 </div>
