@@ -38,7 +38,8 @@ angular.module('reservoirApp')
         }
 
         function refreshReservations() {
-            reservationService.getToday().success(function (reservations) {
+            $scope.retrievalPromise = reservationService.getToday();
+            $scope.retrievalPromise.success(function (reservations) {
                 $scope.reservations = reservations;
             });
         }

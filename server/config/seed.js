@@ -242,7 +242,7 @@ var addCustomers = Customer.find({}).remove(function() {
 function addReservations(employees, customers, tables) {
 
     // create random combinations of reservations
-    for(var i = 0; i < 250; i++){
+    for(var i = 0; i < 500; i++){
         var c = getRand(customers);
 
         var schedDate = getRandomDate(getRandomInt(-7, 14));
@@ -251,6 +251,9 @@ function addReservations(employees, customers, tables) {
         if(getRandomInt(0, 1) === 1) {
             hour = getRandomInt(11, 14); // lunch
         }
+        hour += 5;
+
+        // 2014-09-20T16:30:00.000Z
 
 
         var timeValue = (hour * 60) + (getRandomInt(0, 3) * 15);

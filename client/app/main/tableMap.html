@@ -1,22 +1,27 @@
-<div class="modal-content">
-    <div class="modal-header modal-padded">
-        <h4>Table Map</h4>
-    </div>
+<div class="modal-header modal-padded">
+    <h4>Table Map</h4>
+</div>
 
-    <form role="form" novalidate="">
-        <div class="modal-body modal-padded" style="min-height: 400px;">
-            <div class="row">
-                <div class="col-md-12">
-                    <div style="margin-left: 20px;">
-                        <seat-chart-directive></seat-chart-directive>
-                    </div>
-                </div>
+<div class="modal-body modal-padded" style="min-height: 400px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="margin-left: 20px;">
+                <seat-chart-directive></seat-chart-directive>
             </div>
         </div>
-        <div class="modal-footer modal-padded">
-            <div class="pull-right">
-                <button class="btn" ng-click="close()">Close</button>
-            </div>
-        </div>
-    </form>
+    </div>
+    <div class="row" style="margin-top: 10px;" ng-if="currentSeat.current_party">
+        <label class="col-md-12 wizard-input-label">Reservation:</label>
+        <label class="col-md-12 wizard-input-label bold-label">{{currentSeat.current_party.scheduled_datetime.shortReservationFormat()}}</label>
+        <label class="col-md-12 wizard-input-label">Seated:</label>
+        <label class="col-md-12 wizard-input-label bold-label">{{currentSeat.current_party.seated_datetime.shortReservationFormat()}}</label>
+    </div>
+    <div class="row" style="margin-top: 10px; padding-left: 16px;" ng-if="currentSeat.current_party">
+        <button class="btn-large btn-primary" ng-click="clearTable()">Clear</button>
+    </div>
+</div>
+<div class="modal-footer modal-padded">
+    <div class="pull-right">
+        <button class="btn" ng-click="close()">Close</button>
+    </div>
 </div>

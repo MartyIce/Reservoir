@@ -10,7 +10,7 @@ angular.module('reservoirApp')
             currentSeat = seat;
         });
 
-        $scope.makeTableAvailable = function() {
+        $scope.clearTable = function() {
             var r = currentSeat.current_party;
             if(r) {
                 reservationService.completeReservation(r).success(function() {

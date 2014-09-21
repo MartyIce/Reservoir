@@ -18,22 +18,22 @@ angular.module('reservoirApp')
 
         $scope.seatCustomer = function() {
             reservationService.seatReservation($scope.reservation, $scope.seatRows).success(function(data) {
+                $modalInstance.close($scope.reservation);
             });
 
-            $modalInstance.close($scope.reservation);
         };
         $scope.updateReservation = function() {
             reservationService.updateReservation($scope.reservation, $scope.seatRows).success(function(data) {
+                $modalInstance.close($scope.reservation);
             });
 
-            $modalInstance.close($scope.reservation);
         }
         $scope.completeReservation = function() {
             reservationService.completeReservation($scope.reservation).success(function() {
                 // success
+                $modalInstance.close($scope.reservation);
             });
 
-            $modalInstance.close($scope.reservation);
         }
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');

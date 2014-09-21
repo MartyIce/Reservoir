@@ -5,7 +5,8 @@ angular.module('reservoirApp', [
     'ngResource',
     'ngSanitize',
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'cgBusy'
 ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider
