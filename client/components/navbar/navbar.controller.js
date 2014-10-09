@@ -17,6 +17,7 @@ angular.module('reservoirApp')
             {
                 'title': 'Reservations',
                 'link': '/',
+                authenticate: true,
                 'subItems': [
                     {
                         'title': 'Today',
@@ -31,6 +32,7 @@ angular.module('reservoirApp')
             {
                 'title': 'Admin',
                 'link': '/admin',
+                authenticate: true,
                 'subItems': [
                     {
                         'title': 'Table',
@@ -52,7 +54,7 @@ angular.module('reservoirApp')
                         'title': 'Seating',
                         'link': '/seat_chart'
                     }
-                ]
+                ],
             }
         ]
 
@@ -71,6 +73,14 @@ angular.module('reservoirApp')
         $scope.isActive = function (route) {
             return route === $location.path();
         };
+
+        $scope.hasMenuSecurity = function(item) {
+            if(item.authenticate) {
+                return $scope.isLoggedIn();
+            } else {
+                return true;x
+            }
+        }
     });
 
 

@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('reservoirApp')
-    .controller('ReservationEditController', ['$scope', '$modalInstance', '$http', '$stateParams', '$location', 'inputService', 'reservationService', function ($scope, $modalInstance, $http, $stateParams, $location, inputService, reservationService) {
+    .controller('ReservationEditController', 
+        ['$scope', '$modalInstance', '$http', '$stateParams', '$location', 'inputService', 'reservationService', 'Auth',
+        function ($scope, $modalInstance, $http, $stateParams, $location, inputService, reservationService, Auth) {
 
         function completeModel() {
             $scope.newCustomer = {};
@@ -31,6 +33,7 @@ angular.module('reservoirApp')
         } else {
             $scope.reservation = {};
             $scope.reservation.scheduled_datetime = new Date(new Date().toDateString());
+            $scope.reservation.restaurantId = Auth.getCurrentUser()._id;
             console.log('scheduled_datetime:' + new Date((new Date()).toDateString()));
             completeModel();
             console.log('new res:', $scope.reservation);

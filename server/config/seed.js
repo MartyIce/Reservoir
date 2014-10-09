@@ -296,16 +296,16 @@ function addReservations(employees, customers, tables) {
 
 
 Reservation.find({}).remove(function() {
-    q.all([addEmployees, addCustomers]).then(function() {
-        console.log('all added');
+    // q.all([addEmployees, addCustomers]).then(function() {
+    //     console.log('all added');
 
 
-        q.all([Employee.find().exec(), Customer.find().exec(), Table.find().exec()]).then(function () {
-            console.log('inside find return');
-            addReservations(arguments[0][0], arguments[0][1], arguments[0][2]);
-            //console.log(arguments[0][0], arguments[0][1]);
-        });
-    });
+    //     q.all([Employee.find().exec(), Customer.find().exec(), Table.find().exec()]).then(function () {
+    //         console.log('inside find return');
+    //         addReservations(arguments[0][0], arguments[0][1], arguments[0][2]);
+    //         //console.log(arguments[0][0], arguments[0][1]);
+    //     });
+    // });
 });
 
 User.find({}).remove(function() {

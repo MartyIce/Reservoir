@@ -15,9 +15,9 @@ angular.module('reservoirApp', [
         // MENU ITEM END
         $stateProvider.state('reservation_history', { url: '/reservations/history', templateUrl: 'app/main/history.html', controller: 'historyController' });
         $stateProvider.state('reservation_today', { url: '/', templateUrl: 'app/main/today.html', controller: 'todayController' });
-        $stateProvider.state('table_list', { url: '/tables', templateUrl: 'app/table/list.html', controller: 'TableListController' });
-        $stateProvider.state('table_edit', { url: '/table/edit', templateUrl: 'app/table/edit.html', controller: 'TableEditController' });
-        $stateProvider.state('table_edit_id', { url: '/table/edit/:id', templateUrl: 'app/table/edit.html', controller: 'TableEditController' });
+        $stateProvider.state('table_list', { url: '/tables', templateUrl: 'app/table/list.html', controller: 'TableListController', authenticate: true });
+        $stateProvider.state('table_edit', { url: '/table/edit', templateUrl: 'app/table/edit.html', controller: 'TableEditController', authenticate: true });
+        $stateProvider.state('table_edit_id', { url: '/table/edit/:id', templateUrl: 'app/table/edit.html', controller: 'TableEditController', authenticate: true });
         $stateProvider.state('reservation_list', { url: '/reservations', templateUrl: 'app/reservation/list.html', controller: 'ReservationListController' });
         $stateProvider.state('reservation_edit', { url: '/reservation/edit', templateUrl: 'app/reservation/edit.html', controller: 'ReservationEditController' });
         $stateProvider.state('reservation_edit_id', { url: '/reservation/edit/:id', templateUrl: 'app/reservation/edit.html', controller: 'ReservationEditController' });

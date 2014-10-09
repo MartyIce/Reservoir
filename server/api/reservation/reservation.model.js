@@ -18,7 +18,8 @@ var ReservationSchema = new Schema({
         completed_datetime: Date,
         notes: String,
         status: String,
-        tables: [{type: Schema.Types.ObjectId, ref: 'Table'}]
+        tables: [{type: Schema.Types.ObjectId, ref: 'Table'}],
+        restaurantId: String
     }
 );
 ReservationSchema.plugin(timestamps, { created: "creation_datetime", lastUpdated: "updated_datetime" });
